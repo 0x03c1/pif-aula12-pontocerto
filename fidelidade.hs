@@ -30,7 +30,8 @@ main = do
   -- print (calculaPontos semCampanha 80)
   -- print (calculaPontos pontosEmDobro 80)
   -- print (calculaPontos bonus50 80)
-  -- print (calculaPontos (\p -> p * 3) 80)
+  -- Promocao Relampago (escrevam a chamada com lambda aqui):
+  -- Quarta Verde (escrevam a chamada com lambda aqui):
   putStrLn "--- Desafio 3 ---"
   -- print (calculaPontos blackFriday 150)
   -- print (calculaPontos aniversarioCliente 150)
@@ -39,3 +40,4 @@ main = do
   putStrLn "--- Desafio 4 ---"
   -- print (acumula blackFriday aniversarioCliente 150)
   -- print (acumula aniversarioCliente blackFriday 150)
+  -- Semana do Cliente (escrevam a chamada aqui):

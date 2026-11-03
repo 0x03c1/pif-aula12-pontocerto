@@ -30,6 +30,30 @@ Ao final da atividade, a dupla deverá ser capaz de:
 
 ## 3. Antes de começar (10 min)
 
+### 3.0 O que tem neste repositório
+
+| Arquivo | Para que serve |
+|---|---|
+| `README.md` | Este enunciado |
+| `REVISAO_AULA.md` | **Resumo da aula**, com os exemplos dos slides, para consultar durante a atividade |
+| `fidelidade.hs` | Onde vocês escrevem os Desafios 1 a 4 (já tem os testes, comentados) |
+| `revisao.hs` | Código com 4 erros para o Desafio 5 |
+| `pontocerto.c` | Onde vocês escrevem o Desafio 6, em C |
+| `RESPOSTAS.md` | Nomes da dupla, respostas das perguntas e as saídas dos programas |
+
+**Vocês precisam de:**
+
+- uma conta no GitHub para **cada** integrante (`https://github.com/signup`);
+- **um** jeito de rodar Haskell e C. Pode ser instalado (abaixo) ou online (seção 3.3).
+
+| Sistema | Haskell (GHC + ghci) | Compilador C |
+|---|---|---|
+| Windows | GHCup: `https://www.haskell.org/ghcup/` (siga o comando de instalação para Windows) | Usem o compilador online (seção 3.3) |
+| macOS | GHCup: `https://www.haskell.org/ghcup/`, ou `brew install ghc` | `xcode-select --install` (instala o `cc`) |
+| Linux | GHCup: `https://www.haskell.org/ghcup/`, ou `sudo apt install ghc` | `sudo apt install gcc` |
+
+A instalação do GHC pode demorar. Se não der tempo, usem a opção online. Basta **um computador funcionando por dupla**.
+
 ### 3.1 Fork e dupla no GitHub
 
 1. **Integrante 1** abre https://github.com/0x03c1/pif-aula12-pontocerto, clica em **Fork** e depois em **Create fork**. O fork fica em `https://github.com/SEU-USUARIO/pif-aula12-pontocerto`.
@@ -57,9 +81,15 @@ Se o `git push` pedir usuário e senha e não funcionar, usem a opção A. O Git
 | Haskell (`fidelidade.hs`, `revisao.hs`) | `ghci fidelidade.hs`. Dentro do `ghci`: `main` roda os testes, `:r` recarrega depois de salvar, `:t expr` mostra o tipo, `:q` sai | `https://play.haskell.org`: colem o arquivo **inteiro** e cliquem em **Run** |
 | C (`pontocerto.c`) | `cc pontocerto.c -o pontocerto` e depois `./pontocerto` (ou `gcc` no lugar de `cc`) | `https://www.onlinegdb.com`: escolham a linguagem **C**, colem o arquivo e cliquem em **Run** |
 
+Para usar o `ghci`, abram o terminal **na pasta do arquivo**. Pelo terminal, usem `cd` até a pasta do clone; pela opção A, baixem o arquivo antes.
+
+O Playground online roda o `main`, mas **não tem o `:t`**. Quem usa só o Playground pode conferir os tipos pela assinatura escrita no código ou no `ghci` de outra dupla.
+
 > O bloco `main` dos arquivos Haskell serve apenas para rodar os testes. Vocês não precisam entender `main`, `do`, `print` ou `putStrLn` agora.
 
 ### 3.4 Regras de trabalho e de commit
+
+- **Em dúvida sobre um conceito?** Consultem o `REVISAO_AULA.md`. Cada desafio abaixo indica a seção correspondente.
 
 - **Escrevam a assinatura de tipo de todas as funções Haskell.** Ela faz parte da avaliação.
 - Façam os desafios **na ordem**, testando cada função assim que terminarem.
@@ -92,6 +122,8 @@ menos10 = \p -> p - 10
 
 Confiram com `:t campanhaDaSemana`. A resposta deve ser `campanhaDaSemana :: Int -> Int`.
 
+**Consulta (`REVISAO_AULA.md`):** seções 1, 2 e 6.
+
 ### Desafio 2 — Uma função que recebe a regra (`fidelidade.hs`)
 
 Em vez de uma função de cálculo para cada campanha, o sistema terá **uma só**: `calculaPontos`.
@@ -100,12 +132,14 @@ Em vez de uma função de cálculo para cada campanha, o sistema terá **uma só
 - Ela devolve os pontos que o cliente ganha, aplicando a regra ao valor.
 - **Vocês devem escrever a assinatura.** Qual é o tipo do primeiro argumento?
 
-Depois de testar `calculaPontos` com as regras do Desafio 1, simulem duas promoções que **só vão durar um dia** usando **lambdas passadas direto** para `calculaPontos`, sem criar funções nomeadas. Escrevam as duas chamadas no bloco `main`.
+Depois de testar `calculaPontos` com as regras do Desafio 1, simulem duas promoções que **só vão durar um dia** usando **lambdas passadas direto** para `calculaPontos`, sem criar funções nomeadas. Escrevam as duas chamadas no bloco `main`, nos lugares marcados com "Promocao Relampago" e "Quarta Verde".
 
 1. **Promoção Relâmpago:** pontos triplicados. Compra de R$ 80.
 2. **Quarta Verde:** pontos em dobro **e mais** 10 pontos. Compra de R$ 80.
 
 **Pergunta D2 (em `RESPOSTAS.md`):** por que, nessas promoções, faz sentido usar uma lambda em vez de criar uma função nomeada?
+
+**Consulta (`REVISAO_AULA.md`):** seções 3, 4, 6 e 7.
 
 ### Desafio 3 — Fábrica de campanhas (`fidelidade.hs`)
 
@@ -123,6 +157,8 @@ Escrevam as assinaturas de todas elas e testem as regras fabricadas com `calcula
 
 **Pergunta D3:** o que `campanhaMultiplicadora 5` devolve? Um número ou outra coisa? Como o `:t` confirma isso?
 
+**Consulta (`REVISAO_AULA.md`):** seções 4 e 5.
+
 ### Desafio 4 — Campanhas acumuladas (`fidelidade.hs`)
 
 Na Black Friday, a cliente Ana fez uma compra de **R$ 150**, e hoje também é o **aniversário** dela. As duas campanhas valem ao mesmo tempo.
@@ -131,12 +167,14 @@ Escrevam **`acumula`**, com assinatura. A função recebe **duas regras** e o **
 
 1. calculem os pontos de Ana aplicando primeiro `blackFriday` e depois `aniversarioCliente`;
 2. calculem de novo, invertendo a ordem;
-3. simulem a **Semana do Cliente** (pontos triplicados e depois bônus de 100) para uma compra de R$ 60, usando `acumula` com **uma regra fabricada no Desafio 3 e uma lambda**. Escrevam essa chamada no `main`.
+3. simulem a **Semana do Cliente** (pontos triplicados e depois bônus de 100) para uma compra de R$ 60, usando `acumula` com **uma regra fabricada no Desafio 3 e uma lambda**. Escrevam essa chamada no `main`, no lugar marcado com "Semana do Cliente".
 
 **Perguntas D4:**
 
 - **a)** Por que os itens 1 e 2 dão resultados diferentes?
 - **b)** O marketing decidiu que o bônus de aniversário **não pode ser multiplicado**. Qual ordem o sistema deve usar? Por quê?
+
+**Consulta (`REVISAO_AULA.md`):** seções 3 e 4 (assinatura com **duas** funções como argumento).
 
 ### Desafio 5 — Revisão de código (`revisao.hs`)
 
@@ -147,6 +185,8 @@ O estagiário da PontoCerto escreveu `revisao.hs`, mas o arquivo **não carrega*
 3. Não alterem o bloco `main` nem as funções marcadas como `(correta)`.
 4. Quando o arquivo carregar, rodem `main` e confiram as saídas esperadas que aparecem nos comentários.
 5. Preencham a tabela do Desafio 5 em `RESPOSTAS.md`.
+
+**Consulta (`REVISAO_AULA.md`):** seções 9 e 10.
 
 ### Desafio 6 — O módulo legado em C (`pontocerto.c`)
 
@@ -159,6 +199,8 @@ Parte do sistema antigo é escrita em C. Reescrevam a ideia usando **ponteiros p
 Descomentem as linhas do `main` e confiram as saídas.
 
 **Pergunta D6:** citem duas diferenças entre o `calculaPontos` em Haskell e em C.
+
+**Consulta (`REVISAO_AULA.md`):** seção 8.
 
 ## 5. Testes
 
