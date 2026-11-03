@@ -1,0 +1,13 @@
+# Artefatos de compilacao (Haskell e C)
+*.hi
+*.o
+*.dyn_hi
+*.dyn_o
+*.exe
+pontocerto
+fidelidade
+revisao
+a.out
+# Sistema
+.DS_Store
+Thumbs.db
